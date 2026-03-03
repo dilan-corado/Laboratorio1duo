@@ -21,3 +21,17 @@ El programa mezcla varias tareas: registrar estudiantes, mostrar información, h
 	1.4 ¿Por qué dividir estas tareas mejora el programa?
 
 Dividir las tareas ayuda a que el programa sea más fácil de leer y de entender. También hace que sea más sencillo arreglar algo cuando falle, porque cada parte del programa está en su propio espacio si algún día queremos agregar otra función, solo tendríamos que hacer un nuevo método.
+
+2️⃣ Variables Locales vs Globales
+	
+	2.1 ¿Qué variables deberían declararse como globales?
+
+Las listas estudiantes y calificaciones sí deben ser globales porque todo el programa depende de ellas. Se necesitan en todas las opciones del menú, así que tiene sentido que estén disponibles en cualquier parte del código.
+
+	2.2 ¿Qué variables deberían ser locales dentro de un método?
+
+Las demás variables, como el nombre del estudiante, su nota, el número de opción que elige el usuario, la suma de notas o el promedio, deberían usarse solo dentro del método donde se necesitan. No es necesario que estén disponibles en todo el programa porque solo sirven en ese momento específico
+
+	2.3 Reflexión del alcance, vida y riesgos
+
+Cuando una variable es local, solo existe en el ratito que se ejecuta esa parte del programa, y eso es bueno porque evita confusiones. En cambio, una variable global está presente todo el tiempo, y si el programa tiene muchas de estas, es más fácil cometer errores porque cualquier parte podría cambiar sus valores sin darse cuenta. Por eso conviene dejar como globales solo las que son realmente importantes para todo el programa.
