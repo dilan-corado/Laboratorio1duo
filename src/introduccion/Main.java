@@ -25,32 +25,21 @@ public class Main {
 
             int opcion = Integer.parseInt(scanner.nextLine());
 
-            if (opcion == 1) {
+            // switch para llamar los métodos.
+            switch (opcion) {
+            case 1: agregarEstudiante(scanner);
+            break;
+            case 2: mostrarEstudiantes();  
+            break;
+            case 5: System.out.println("Saliendo del sistema...");
+            return;
+            default: System.out.println("Opción no válida. Intente de nuevo.");
+            break;  
+            }
+        }
+     
 
-                System.out.print("Ingrese el nombre del estudiante: ");
-                String nombre = scanner.nextLine();
-
-                System.out.print("Ingrese la calificación del estudiante: ");
-                double calificacion = Double.parseDouble(scanner.nextLine());
-
-                estudiantes.add(nombre);
-                calificaciones.add(calificacion);
-
-                System.out.println("Estudiante agregado correctamente.");
-
-            } else if (opcion == 2) {
-
-                if (estudiantes.isEmpty()) {
-                    System.out.println("No hay estudiantes registrados.");
-                } else {
-                    System.out.println("\nLista de estudiantes:");
-                    for (int i = 0; i < estudiantes.size(); i++) {
-                        System.out.println(estudiantes.get(i) +
-                                " - Calificación: " + calificaciones.get(i));
-                    }
-                }
-
-            } else if (opcion == 3) {
+            else if (opcion == 3) {
 
                 if (calificaciones.isEmpty()) {
                     System.out.println("No hay calificaciones registradas.");
@@ -95,7 +84,32 @@ public class Main {
                 System.out.println("Opción no válida. Intente de nuevo.");
             }
         }
+		  
+    
+    
+    // Método para la opción 1 del menú.
+    public static void agregarEstudiante(Scanner scanner) {
+        System.out.print("Ingrese el nombre del estudiante: ");
+        String nombre = scanner.nextLine();
 
-        scanner.close();
+        System.out.print("Ingrese la calificación del estudiante: ");
+        double calificacion = Double.parseDouble(scanner.nextLine());
+
+        estudiantes.add(nombre);
+        calificaciones.add(calificacion);
+
+        System.out.println("Estudiante agregado correctamente.");
+    }
+    // Método para la opción 2 del menú.
+    public static void mostrarEstudiantes() {
+        if (estudiantes.isEmpty()) {
+            System.out.println("No hay estudiantes registrados.");
+        } else {
+            System.out.println("\nLista de estudiantes:");
+            for (int i = 0; i < estudiantes.size(); i++) {
+                System.out.println(estudiantes.get(i) +
+                        " - Calificación: " + calificaciones.get(i));
+            }
+        }
     }
 }
