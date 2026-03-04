@@ -23,7 +23,8 @@ public class Main {
             System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
 
-            int opcion = Integer.parseInt(scanner.nextLine());
+            int opcion = leerEntero(scanner, "Selecciona una opción: "); //Aqui va la validacion con trycatch.
+            System.out.println();
 
             // switch para llamar los métodos.
             switch (opcion) {
@@ -31,61 +32,34 @@ public class Main {
             break;
             case 2: mostrarEstudiantes();  
             break;
+            case 3: calcularPromedio();
+            break;
+            case 4: mostrarEstudianteConMayorNota();
+            break;
             case 5: System.out.println("Saliendo del sistema...");
             return;
             default: System.out.println("Opción no válida. Intente de nuevo.");
-            break;  
+            break; 
             }
         }
-     
-
-            else if (opcion == 3) {
-
-                if (calificaciones.isEmpty()) {
-                    System.out.println("No hay calificaciones registradas.");
-                } else {
-                    double suma = 0;
-
-                    for (double calificacion : calificaciones) {
-                        suma += calificacion;
-                    }
-
-                    double promedio = suma / calificaciones.size();
-                    System.out.println("El promedio de calificaciones es: " + promedio);
-                }
-
-            } else if (opcion == 4) {
-
-                if (calificaciones.isEmpty()) {
-                    System.out.println("No hay calificaciones registradas.");
-                } else {
-
-                    double maxCalificacion = calificaciones.get(0);
-                    String estudianteMax = estudiantes.get(0);
-
-                    for (int i = 1; i < calificaciones.size(); i++) {
-                        if (calificaciones.get(i) > maxCalificacion) {
-                            maxCalificacion = calificaciones.get(i);
-                            estudianteMax = estudiantes.get(i);
-                        }
-                    }
-
-                    System.out.println("El estudiante con la calificación más alta es: "
-                            + estudianteMax + " con " + maxCalificacion);
-                }
-
-            } else if (opcion == 5) {
-
-                System.out.println("Saliendo del sistema...");
-                break;
-
-            } else {
-
-                System.out.println("Opción no válida. Intente de nuevo.");
-            }
-        }
-		  
+    }
     
+  //Metodo de validacion para que unicamente haya numeros enteros  
+    public static int leerEntero(Scanner scanner, String mensaje) { 
+        int numero;
+
+        while (true) {
+            System.out.print(mensaje);
+            try {
+                numero = scanner.nextInt();
+                scanner.nextLine(); 
+                return numero;
+            } catch (Exception e) {
+                System.out.println("Error: debes ingresar un número entero.");
+                scanner.nextLine(); 
+        }
+    }
+}
     
     // Método para la opción 1 del menú.
     public static void agregarEstudiante(Scanner scanner) {
@@ -100,6 +74,7 @@ public class Main {
 
         System.out.println("Estudiante agregado correctamente.");
     }
+    
     // Método para la opción 2 del menú.
     public static void mostrarEstudiantes() {
         if (estudiantes.isEmpty()) {
@@ -112,4 +87,42 @@ public class Main {
             }
         }
     }
-}
+    
+	// Método para la opción 3
+	public static void calcularPromedio() {
+	    if (calificaciones.isEmpty()) {
+	        System.out.println("No hay calificaciones registradas.");
+	    } else {
+	        double suma = 0;
+	
+	        for (double calificacion : calificaciones) {
+	            suma += calificacion;
+	        }
+	
+	        double promedio = suma / calificaciones.size();
+	        System.out.println("El promedio de calificaciones es: " + promedio);
+	    }
+	}
+	
+	// Método para la opción 4
+	public static void mostrarEstudianteConMayorNota() {
+	    if (calificaciones.isEmpty()) {
+	        System.out.println("No hay calificaciones registradas.");
+	    } else {
+	
+	        double maxCalificacion = calificaciones.get(0);
+	        String estudianteMax = estudiantes.get(0);
+	
+	        for (int i = 1; i < calificaciones.size(); i++) {
+	            if (calificaciones.get(i) > maxCalificacion) {
+	                maxCalificacion = calificaciones.get(i);
+	                estudianteMax = estudiantes.get(i);
+	            }
+	        }
+	
+	        System.out.println("El estudiante con la calificación más alta es: "
+	                + estudianteMax + " con " + maxCalificacion);
+	    	}
+		}
+	}
+
