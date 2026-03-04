@@ -47,26 +47,27 @@ Cuando una variable es local, solo existe en el ratito que se ejecuta esa parte 
 
 Las ventajas que tiene dividir el código en métodos son los siguientes:
 
-	Organización: Ayuda a evitar que se tenga un bloque gigante de código en el método main. 	Al separar la lógica, cada método tiene una responsabilidad única, lo que hace que la 		estructura general del programa sea lógica y predecible.
+Organización: Ayuda a evitar que se tenga un bloque gigante de código en el método main. Al separar la lógica, cada método tiene una responsabilidad única, lo que hace que la estructura general del programa sea lógica y predecible.
 
-	Reutilización: Si se necesita calcular un promedio en tres partes diferentes de tu 		programa, en lugar de copiar y pegar el código, con llamar el método en un lugar que lo 	necesite es suficiente.
+Reutilización: Si se necesita calcular un promedio en tres partes diferentes de tu programa, en lugar de copiar y pegar el código, con llamar el método en un lugar que lo necesite es suficiente.
 
-	Mantenimiento: Si hay un error en la parte de agregar los estudiantes, se sabrá 		exactamente dónde ir a buscar para resolver el problema.
+Mantenimiento: Si hay un error en la parte de agregar los estudiantes, se sabrá exactamente dónde ir a buscar para resolver el problema.
 
-	Claridad: Al nombrar bien los métodos ayudan a ser más claro y entendible lo que hace el 	bloque de código de los métodos.
+Claridad: Al nombrar bien los métodos ayudan a ser más claro y entendible lo que hace el bloque de código de los métodos.
 
 	4.2 ¿Por qué no es recomendable usar muchas variables globales? 
 
 Aunque las variables globales parecen ser muy útiles, su uso excesivo se considera un antipatrón de diseño por las siguientes razones:
 
-	Posibilidad de errores inesperados: Como cualquier método puede modificar una variable 		global en cualquier momento, un método podría cambiar un valor que otro método estaba 		usando. Esto genera errores impredecibles que son muy difíciles de rastrear.
+Posibilidad de errores inesperados: Como cualquier método puede modificar una variable 		global en cualquier momento, un método podría cambiar un valor que otro método estaba usando. Esto genera errores impredecibles que son muy difíciles de rastrear.
 
-	Dificultad para depurar: Si el valor de una variable global es incorrecto, se tendrá que 	revisar todo el código para descubrir qué método la modificó erróneamente.
+Dificultad para depurar: Si el valor de una variable global es incorrecto, se tendrá que 	revisar todo el código para descubrir qué método la modificó erróneamente.
 
-	Dependencia entre métodos: Si los métodos dependen de variables globales, dejan de ser 		independientes. No se podrá tomar ese método y usarlo fácilmente en otro proyecto o 		probarlo de forma aislada.
+Dependencia entre métodos: Si los métodos dependen de variables globales, dejan de ser independientes. No se podrá tomar ese método y usarlo fácilmente en otro proyecto o probarlo de forma aislada.
 
-4.3 ¿Cómo mejora la modularización la legibilidad del código? 
-	La mejora haciendo que un bloque de código espagueti la ordene y sea más legible. Hará 		que sea menos cansado leer el código para el programador y hará más facíl para leer el 		bloque de código main, también reduce la cantidad de código escrito en main.
+	4.3 ¿Cómo mejora la modularización la legibilidad del código? 
+	
+La mejora haciendo que un bloque de código espagueti la ordene y sea más legible. Hará 		que sea menos cansado leer el código para el programador y hará más facíl para leer el 		bloque de código main, también reduce la cantidad de código escrito en main.
 
 🧑🏻‍💻 5. Decisiones de modulaoización:
 
