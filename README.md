@@ -4,6 +4,11 @@ Integrantes:
 2. Osvin Leonel Gámez Medina.
 
 🧠 Parte 1 – Análisis del Programa Original
+
+	📚 Análisis:
+
+El programa es un sistema sencillo que permite gestionar estudiantes y sus calificaciones desde la consola. Al iniciar, muestra un menú con varias opciones para que el usuario pueda interactuar con el sistema, como agregar un estudiante con su calificación, mostrar la lista de estudiantes registrados, calcular el promedio de las calificaciones y mostrar al estudiante con la nota más alta, además de una opción para salir del programa. La información se guarda en dos listas: una para los nombres de los estudiantes y otra para sus calificaciones, manteniendo la misma posición en ambas para que los datos correspondan al mismo estudiante. El programa funciona dentro de un ciclo que mantiene el menú activo hasta que el usuario decide salir, y dependiendo de la opción elegida ejecuta la acción correspondiente. También revisa si hay estudiantes registrados antes de mostrar información o hacer cálculos, para evitar errores. En general, el programa cumple su función, pero la mayoría del código está dentro del método principal, lo que lo hace un poco largo y menos organizado, por lo que sería mejor separar algunas tareas en métodos para que el programa sea más claro, ordenado y fácil de mantener.
+
 	1️⃣ Identificación de Tareas Repetitivas
 
 	1.1 ¿Qué partes del código pueden convertirse en métodos?
@@ -36,22 +41,36 @@ Las demás variables, como el nombre del estudiante, su nota, el número de opci
 
 Cuando una variable es local, solo existe en el ratito que se ejecuta esa parte del programa, y eso es bueno porque evita confusiones. En cambio, una variable global está presente todo el tiempo, y si el programa tiene muchas de estas, es más fácil cometer errores porque cualquier parte podría cambiar sus valores sin darse cuenta. Por eso conviene dejar como globales solo las que son realmente importantes para todo el programa.
 
-🧩 Parte 4 – Preguntas de Reflexión 1️⃣ ¿Qué ventajas tiene dividir el código en métodos? Las ventajas que tiene dividir el código en métodos son los siguientes:
+🧩 Parte 4 – Preguntas de Reflexión 
 
-Organización: Ayuda a evitar que se tenga un bloque gigante de código en el método main. Al separar la lógica, cada método tiene una responsabilidad única, lo que hace que la estructura general del programa sea lógica y predecible.
+	4.1 ¿Qué ventajas tiene dividir el código en métodos? 
 
-Reutilización: Si se necesita calcular un promedio en tres partes diferentes de tu programa, en lugar de copiar y pegar el código, con llamar el método en un lugar que lo necesite es suficiente.
+Las ventajas que tiene dividir el código en métodos son los siguientes:
 
-Mantenimiento: Si hay un error en la parte de agregar los estudiantes, se sabrá exactamente dónde ir a buscar para resolver el problema.
+	Organización: Ayuda a evitar que se tenga un bloque gigante de código en el método main. 	Al separar la lógica, cada método tiene una responsabilidad única, lo que hace que la 		estructura general del programa sea lógica y predecible.
 
-Claridad: Al nombrar bien los métodos ayudan a ser más claro y entendible lo que hace el bloque de código de los métodos.
+	Reutilización: Si se necesita calcular un promedio en tres partes diferentes de tu 		programa, en lugar de copiar y pegar el código, con llamar el método en un lugar que lo 	necesite es suficiente.
 
-2️⃣ ¿Por qué no es recomendable usar muchas variables globales? Aunque las variables globales parecen ser muy útiles, su uso excesivo se considera un antipatrón de diseño por las siguientes razones:
+	Mantenimiento: Si hay un error en la parte de agregar los estudiantes, se sabrá 		exactamente dónde ir a buscar para resolver el problema.
 
-Posibilidad de errores inesperados: Como cualquier método puede modificar una variable global en cualquier momento, un método podría cambiar un valor que otro método estaba usando. Esto genera errores impredecibles que son muy difíciles de rastrear.
+	Claridad: Al nombrar bien los métodos ayudan a ser más claro y entendible lo que hace el 	bloque de código de los métodos.
 
-Dificultad para depurar: Si el valor de una variable global es incorrecto, se tendrá que revisar todo el código para descubrir qué método la modificó erróneamente.
+	4.2 ¿Por qué no es recomendable usar muchas variables globales? 
 
-Dependencia entre métodos: Si los métodos dependen de variables globales, dejan de ser independientes. No se podrá tomar ese método y usarlo fácilmente en otro proyecto o probarlo de forma aislada.
+Aunque las variables globales parecen ser muy útiles, su uso excesivo se considera un antipatrón de diseño por las siguientes razones:
 
-3️⃣ ¿Cómo mejora la modularización la legibilidad del código? La mejora haciendo que un bloque de código espagueti la ordene y sea más legible. Hará que sea menos cansado leer el código para el programador y hará más facíl para leer el bloque de código main, también reduce la cantidad de código escrito en main.
+	Posibilidad de errores inesperados: Como cualquier método puede modificar una variable 		global en cualquier momento, un método podría cambiar un valor que otro método estaba 		usando. Esto genera errores impredecibles que son muy difíciles de rastrear.
+
+	Dificultad para depurar: Si el valor de una variable global es incorrecto, se tendrá que 	revisar todo el código para descubrir qué método la modificó erróneamente.
+
+	Dependencia entre métodos: Si los métodos dependen de variables globales, dejan de ser 		independientes. No se podrá tomar ese método y usarlo fácilmente en otro proyecto o 		probarlo de forma aislada.
+
+4.3 ¿Cómo mejora la modularización la legibilidad del código? 
+	La mejora haciendo que un bloque de código espagueti la ordene y sea más legible. Hará 		que sea menos cansado leer el código para el programador y hará más facíl para leer el 		bloque de código main, también reduce la cantidad de código escrito en main.
+
+🧑🏻‍💻 5. Decisiones de modulaoización:
+
+
+💡 6. Justificación de variables locales y globales: 
+
+
