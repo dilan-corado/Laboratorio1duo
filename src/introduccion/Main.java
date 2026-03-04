@@ -61,14 +61,46 @@ public class Main {
     }
 }
     
+    // Método para validar que el nombre solo tenga letras
+    public static String leerNombre(Scanner scanner, String mensaje) {
+        String nombre;
+        while (true) {
+            System.out.print(mensaje);
+            nombre = scanner.nextLine().trim();
+            
+            // Esta expresión regular verifica que solo haya letras (incluyendo tildes/ñ) y espacios
+            if (nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$")) {
+                return nombre;
+            } else {
+                System.out.println("Error: El nombre solo debe contener letras. Intente de nuevo.");
+            }
+        }
+    }
+
+    // Método para validar la calificación (de 0 a 100)
+    public static double leerCalificacion(Scanner scanner, String mensaje) {
+        double calificacion;
+        while (true) {
+            System.out.print(mensaje);
+            try {
+                calificacion = Double.parseDouble(scanner.nextLine());
+                
+                if (calificacion >= 0 && calificacion <= 100) {
+                    return calificacion;
+                } else {
+                    System.out.println("Error: La calificación debe estar entre 0 y 100.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Debes ingresar un número válido (ej. 85.5).");
+            }
+        }
+    }
+    
     // Método para la opción 1 del menú.
     public static void agregarEstudiante(Scanner scanner) {
-        System.out.print("Ingrese el nombre del estudiante: ");
-        String nombre = scanner.nextLine();
-
-        System.out.print("Ingrese la calificación del estudiante: ");
-        double calificacion = Double.parseDouble(scanner.nextLine());
-
+    	String nombre = leerNombre(scanner, "Ingrese el nombre del estudiante: ");
+        double calificacion = leerCalificacion(scanner, "Ingrese la calificación del estudiante (0-100): ");
+        
         estudiantes.add(nombre);
         calificaciones.add(calificacion);
 
@@ -98,7 +130,7 @@ public class Main {
 	        for (double calificacion : calificaciones) {
 	            suma += calificacion;
 	        }
-	
+	        
 	        double promedio = suma / calificaciones.size();
 	        System.out.println("El promedio de calificaciones es: " + promedio);
 	    }

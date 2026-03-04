@@ -70,8 +70,27 @@ Dependencia entre métodos: Si los métodos dependen de variables globales, deja
 La mejora haciendo que un bloque de código espagueti la ordene y sea más legible. Hará 		que sea menos cansado leer el código para el programador y hará más facíl para leer el 		bloque de código main, también reduce la cantidad de código escrito en main.
 
 🧑🏻‍💻 5. Decisiones de modulaoización:
+Para que el programa sea más legible, claro y no este todo en el método main, tomamos las siguientes deciciones para mejorar el código:
+	
+	Validaciones: Creamos tres métodos utiles indipendientemente para manejar todas las interacciones de entrada del usuario, los cuales son: leerEntero, leerNombre y leerCalificacion. Esto ayuda a que si hay un error cuando el usuario ingrese algun dato, no se detenga de forma brusca, sino que hace que continue señalandole al usuario su error y que lo puede corregir. 
+	
+	Métodos lógicos: Cada método fue hecho tomando como base el código ya hecho para su misma funcionalidad, con la diferencia de adoptarlo en un solo bloque de código independiente y que podrá usarse solo con el nombre del método y no usando todo el código de nuevo. Esto ayuda a aislar posibles errores a futuro y haciendo que sea más facíl de solucionar si llegará a suceder algo.
+	 
+	Las variables que se encuentran en el método de estudiantes y calificaciones, se declararon como variables estáticas globales. Tomando en cuenta el programa, esta decisión fue tomada para que permita que todos los métodos modulares puedan acceder a la información de los alumnos y sus notas sin necesidad de estar pasando las listas como parámetros de un método a otro.
 
 
 💡 6. Justificación de variables locales y globales: 
+	En el diseño del programa, declaramos varibales según su funcionamiento para resucir el riesgo de modificaciones por error del programador y optimizando el uso de la memoria.
 
+	En el programa solo dos variables fueron declaradas globales, las cuales son estudiante y calificacion. Estas listas son como la base de datos de la memoria del programa, ya que casi todos los métodos necesitan acceder a la misma información, ya sea para leerla o para escribirla. Declararlas de forma estática y global permite que el estado del programa persista durante toda la ejecución. Esto evita la necesidad de pasar las listas como parámetros constantemente de un método a otro, manteniendo las firmas de los métodos limpias y sencillas.
+
+	Las variables locales, en su mayoria estan limitadas al blque de código donde se utilizan. Se dividen en varias categorias, las cuales son las siguientes:
+
+	Variables de Instancia Compartida: Scanner se agrego una única vez en el método principal y se pasó como parámetro a los métodos que lo requieren (leerEntero, leerNombre, etc.). Evita crear múltiples instancias de Scanner(System.in), lo cual es una mala práctica en Java que puede causar fugas de memoria o bloqueos en la lectura de la consola.
+
+	Variables de Lectura Temporal: Estas vaiables como opcion, numero, nombre, calificacion: Creadas dentro del main, leerEntero, leerNombre y leerCalificacion respectivamente. Solo existen el tiempo suficiente para capturar la entrada del usuario, validarla y, o bien usarla en un switch, o bien guardarla en las listas globales. Una vez cumplen su cometido, el programa libera esa memoria.
+
+	Variables de Cálculo y Búsqueda: Las variables suma, promedio, maxCalificacion y estudianteMax. Almacenan estados intermedios. Por ejemplo, suma solo es útil mientras se están iterando las calificaciones. Hacer que suma o promedio fueran globales sería peligroso, ya que si se llama al método dos veces y no se "reinician" a cero, el cálculo arrastraría los datos anteriores. Al ser locales, nos aseguramos de que cada vez que se llama al método, las variables nacen desde cero, garantizando un resultado puro y sin efectos secundarios.
+
+	Variables de Control de Flujo: Las variables que estan en los bucles, limitan su existencia a los paréntesis del for. Aislar estas variables evita colisiones lógicas si hubiera ciclos anidados o si se llaman otros métodos dentro del bucle.
 
